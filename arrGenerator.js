@@ -10,5 +10,5 @@ function generator(length){
     }
     return arr
 }
-var arr1 = generator(20);
-console.log(arr1);
+
+module.exports = generator;
