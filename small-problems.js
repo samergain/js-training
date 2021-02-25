@@ -749,3 +749,7 @@ function repeatedString(s, n) {
     }
     return (aCountIn_s * sCount + remSCount)
 }
+
+
+////////    PROBLEM 27   //////////
+//
