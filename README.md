@@ -4,3 +4,5 @@
 
 ## Array Generator  
 a function to generate a sorted array. the length is determined as a param.
+## Binary Search Algorithm 
+## Linear Search Algorithm
