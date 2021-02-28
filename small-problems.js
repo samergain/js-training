@@ -83,12 +83,50 @@ function swapLetterCase(str){
 
 //////////  PROBLEM 7  ///////////
 // Write code to create a function that accepts a string (`str`) and returns the longest word in the string
-
-
+function longestWord(str){
+    
+    let words = str.split(" ");
+    let longest = words[0];
+    for(let i=1; i<words.length; i++){
+        if(words[i].length > longest.length){
+            longest = words[i];
+        }
+    }
+    return longest;
+}
+//test
+// var test = "this is a very looooong string";
+// var result = longestWord(test);
+// console.log(result);
 //////////  PROBLEM 8  ///////////
 // Write code to create a function that accepts a string and returns an acronym for the given string
+function acronym(str){
+    let acro = "";
+    let words = str.split(" ");
+    for(let i=0; i<words.length; i++){
+        let wordLetters = words[i].split("");
+        acro += wordLetters[0].toUpperCase();
+    }
+    return acro;
+}
 
+//test
+// var test = "united arab emirates";
+// var result = acronym(test);
+// console.log(result);
 
 //////////  PROBLEM 9  ///////////
 // Write code to create a function that accepts a string (`str`) and reverses the order of the words in the string
+function reverseString(str){
+    let reverse = [];
+    let words = str.split(" ");
+    for(let i = words.length -1; i>=0; i--){
+        reverse.push(words[i]);
+    }
+    return reverse.join(" ");
+}
 
+//test
+// var test = "united arab emirates";
+// var result = reverseString(test);
+// console.log(result);
