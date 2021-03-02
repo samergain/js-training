@@ -130,3 +130,33 @@ function reverseString(str){
 // var test = "united arab emirates";
 // var result = reverseString(test);
 // console.log(result);
+
+//////////  PROBLEM 10  ///////////
+// Write code to return a new string with all of the characters in `str` reversed.
+// You may NOT use the built-in reverse method
+function reverseArray(arr){
+    let halfArr = Math.floor(arr.length/2);
+    let j = arr.length -1;
+    for(let i=0; i<halfArr; i++) {
+        var temp;
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        j--;
+    }
+    return arr;
+}
+
+//test
+// var test1 = [1,2,3,4,5,6,7,8];
+// var test2 = [1,2,3,4,5,6,7];
+// var test3 = [1];
+// var test4 = [];
+// var result1 = reverseArray(test1);
+// var result2 = reverseArray(test2);
+// var result3 = reverseArray(test3);
+// var result4 = reverseArray(test4);
+// console.log(result1);
+// console.log(result2);
+// console.log(result3);
+// console.log(result4);
