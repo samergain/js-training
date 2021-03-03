@@ -160,3 +160,22 @@ function reverseArray(arr){
 // console.log(result2);
 // console.log(result3);
 // console.log(result4);
+
+
+//////////  PROBLEM 11  ///////////
+//There is a large pile of socks that must be paired by color. 
+//Given an array of integers representing the color of each sock, 
+//determine how many pairs of socks with matching colors there are.
+// example: input is [1,1,3,2,1,2,5,1,7,7] output is: 4 //2 pairs of color1 + 1 pair pf color2 + 1 pair of color7  
+
+function sockMerchant(ar) {
+    let pairs = 0;
+    ar.sort();
+    for(let i=0; i<ar.length; i++){
+        if(ar[i] === ar[i+1]){
+            pairs++;
+            i++;
+        }
+    }
+    return pairs;
+}
