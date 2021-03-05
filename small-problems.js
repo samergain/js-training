@@ -210,3 +210,47 @@ function lookNsay(n){
 }
 
 console.log(lookNsay(1233444443));
+
+//////////  PROBLEM 13  ///////////
+// Write code to create a function that accepts a string and returns an object containing the number of times each character appears in the string
+
+var characterCount = function(str) {
+    let arr = str.split("");
+    let charCount = {};
+    for(let i=0; i<arr.length; i++){
+        let current = arr[i];
+        let count = 1;
+        if(charCount[current]){
+            continue;
+        }
+        else {
+            for(let j=i+1; j<arr.length; j++){
+                if(arr[j]===current){
+                    count++
+                }
+            }
+            charCount[current] = count;
+        }
+    }
+    return charCount;
+};
+
+//version2 -BETTER
+var characterCount = function(str) {
+    var charMap = {};
+  
+    for (var i = 0; i < str.length; i++) {
+      var char = str[i];
+  
+      if (char in charMap) {
+        charMap[char]++;
+      } else {
+        charMap[char] = 1;
+      }
+    }
+  
+    return charMap;
+  };
+
+// let result = characterCount("Hello World");
+// console.log(result);
