@@ -179,3 +179,34 @@ function sockMerchant(ar) {
     }
     return pairs;
 }
+
+//////////  PROBLEM 12  ///////////
+// Write code to create a function that accepts a number (`n`) 
+// and returns a new number that satisfies the look-and-say-sequence
+// The look and say sequence can be understood by reading a number out loud, 
+// digit by digit, but first saying the number of times each digit appears in a row.
+//     - For example, given the following number:
+//     var n = 5442;
+//     - There is **one** five, **two** fours, and **one** two. 
+//      So the look-say-sequence of `n` should be `152412`.
+function lookNsay(n){
+    let nString = ""+n;
+    
+    let currentBit = nString[0];
+    let currentCount = 1;
+    let result = "";
+    
+    for(let i=1; i<=nString.length; i++){
+        if(currentBit === nString[i]) {
+            currentCount++;
+        } else {
+            result += currentCount;
+            result += currentBit;
+            currentBit = nString[i];
+            currentCount = 1;
+        }
+    }
+    return result;
+}
+
+console.log(lookNsay(1233444443));
