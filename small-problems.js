@@ -254,3 +254,30 @@ var characterCount = function(str) {
 
 // let result = characterCount("Hello World");
 // console.log(result);
+
+//////////  PROBLEM 14  ///////////
+// Write code to create a function that accepts an array of numbers, finds the largest two numbers, and returns the product of the two
+
+var productOfLargestTwo = function(arr) {
+
+    let max = arr[0];
+    let secondMax = null;
+    if(arr.length < 2) {
+        return null;
+    } else {
+        for(let i=1; i<arr.length; i++){
+            if(arr[i]>max){
+                secondMax = max;
+                max = arr[i];
+            } else if(arr[i]>secondMax || secondMax === null){
+                secondMax = arr[i];
+            }
+        }
+        return max * secondMax;
+    }
+};
+
+// console.log([]);
+// console.log([5]);
+// console.log([5,3]);
+// console.log([5,-3]);
