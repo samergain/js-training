@@ -281,3 +281,41 @@ var productOfLargestTwo = function(arr) {
 // console.log([5]);
 // console.log([5,3]);
 // console.log([5,-3]);
+
+
+/////////// PROBLEM 15 //////////////
+// Write code to create a function that accepts a string and returns the string in camelCase
+
+var camelCase = function(str) {
+    let result = "";
+    str = str.trim().toLowerCase();
+    for(let i=0; i<str.length; i++){
+        if(str[i] !== " "){
+            result += str[i];
+        } else {
+            result += str[i+1].toUpperCase();
+            i++;
+        }
+    }
+    return result;
+};
+
+//v2 - problem 15
+var camelCase = function(str) {
+    var result = "";
+    var words = str.toLowerCase().split(" ");
+  
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      var letters = word.split("");
+  
+      if (i > 0) {
+        letters[0] = letters[0].toUpperCase();
+      }
+  
+      result += letters.join("");
+    }
+  
+    return result;
+  };
+  
