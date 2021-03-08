@@ -318,4 +318,35 @@ var camelCase = function(str) {
   
     return result;
   };
-  
+
+//////////  PROBLEM 16  ///////////
+// Write code to create a function that accepts an array numbers
+// Return `true` is no number appears in the array more than once, else return `false`
+
+//v1 - big(O)=(n^2)
+var isUnique = function(arr) {
+    for(let i=0; i<arr.length; i++){
+        let current = arr[i];
+        for(let j=i+1; j<arr.length; j++){
+            if(current === arr[j]){
+                return false;
+            }
+        }
+    }
+    return true;
+};
+
+//v2 - using map to reduce big(O) to (n)
+var isUnique2 = function(arr) {
+    let mapNum = {};
+    for(let i=0; i<arr.length; i++){
+        let current = arr[i];
+        if(mapNum[current] === true){
+            return false;
+        } else {
+            mapNum[current] = true;
+        }
+    }
+    return true;
+
+}
