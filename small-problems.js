@@ -350,3 +350,33 @@ var isUnique2 = function(arr) {
     return true;
 
 }
+
+//////////  PROBLEM 17  ///////////
+// Write code to create a function that accepts two strings
+// Return true if the strings are anagrams of each other, otherwise return false
+
+var isAnagram = function(strA, strB) {
+    if(strA.length !== strB.length){
+        return false;
+    }
+    let aLetters = {};
+    let bLetters = {};
+    for(let i=0; i<strB.length; i++){
+        if(aLetters[strA[i]]){
+            aLetters[strA[i]]++;
+        } else {
+            aLetters[strA[i]] = 1;
+        }
+        if(bLetters[strB[i]]){
+            bLetters[strB[i]]++;
+        } else {
+            bLetters[strB[i]] = 1;
+        }
+    }
+    for(let key in aLetters){
+        if(aLetters[key] !== bLetters[key]){
+            return false;
+        }
+    }
+    return true;
+};
