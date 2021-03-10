@@ -401,4 +401,23 @@ var mostSongsInPlaylist = function(arr) {
     return arr.length;
   };
 
-//
+//V2
+var mostSongsInPlaylist = function(arr) {
+    var sortedArr = arr.sort();
+    var totalMins = 0;
+    var totalSongs = 0;
+  
+    for (var i = 0; i < sortedArr.length; i++) {
+      var currentSongDuration = sortedArr[i];
+  
+      if (totalMins + currentSongDuration <= 60) {
+        totalMins += currentSongDuration;
+        totalSongs++;
+      } else {
+        return totalSongs;
+      }
+    }
+  
+    return totalSongs;
+  };
+  
