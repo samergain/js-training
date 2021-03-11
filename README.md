@@ -1,8 +1,3 @@
 # js-training
 
-## each file will contain a separate problem to be solved
-
-## Array Generator  
-a function to generate a sorted array. the length is determined as a param.
-## Binary Search Algorithm 
-## Linear Search Algorithm
+this repo will contain **data structures, algorithms, problems** coded with JavaScript.
