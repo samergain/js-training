@@ -445,7 +445,7 @@ var isPerfectSquare = function(num) {
 
 ////////////   PROBLEM 20   //////////
 // Write code to create a function that accepts an array of unique numbers
-// If any two numbers in the array add up to 20, return true, else return false
+// If any two numbers in the array can be multiplied into 20, return true, else return false
 
 var multiplyInto20 = function(arr) {
     var numMap = {};
@@ -465,3 +465,27 @@ var multiplyInto20 = function(arr) {
     return false;
   };
   
+
+////////////    PROBLEM 21  ///////////
+// Write code to merge two sorted arrays into a new sorted array
+
+var mergeSorted = function (arr1, arr2) {
+    let result = [];
+    let j=0;
+    let current = arr2[j];
+    for(let i=0; i<arr1.length; i++){
+        //when arr2[j] === undefined it means j is >= arr2.length, so we just add the rest of arr1 to result
+        if(arr2[j] >= arr1[i] || arr2[j] === undefined){
+            result.push(arr1[i]);
+        } else {
+            result.push(arr2[j]);
+                j++;
+                i--;
+        }      
+    }
+    while(j<arr2.length){
+        result.push(arr2[j]);
+        j++;
+    }
+    return result;
+};
