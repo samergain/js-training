@@ -209,7 +209,7 @@ function lookNsay(n){
     return result;
 }
 
-console.log(lookNsay(1233444443));
+//console.log(lookNsay(1233444443));
 
 //////////  PROBLEM 13  ///////////
 // Write code to create a function that accepts a string and returns an object containing the number of times each character appears in the string
@@ -489,3 +489,40 @@ var mergeSorted = function (arr1, arr2) {
     }
     return result;
 };
+
+//V2
+// Write code to merge two sorted arrays into a new sorted array
+
+var mergeSorted = function (arr1, arr2) {
+    var result = [];
+  
+    var idx1 = 0;
+    var idx2 = 0;
+  
+    while (idx1 < arr1.length && idx2 < arr2.length) {
+      var num1 = arr1[idx1];
+      var num2 = arr2[idx2];
+  
+      if (num1 < num2) {
+        result.push(num1);
+        idx1++;
+      } else {
+        result.push(num2);
+        idx2++;
+      }
+    }
+  
+    while (idx1 < arr1.length) {
+      var num1 = arr1[idx1];
+      result.push(num1);
+      idx1++;
+    }
+  
+    while (idx2 < arr2.length) {
+      var num2 = arr2[idx2];
+      result.push(num2);
+      idx2++;
+    }
+  
+    return result;
+  };
