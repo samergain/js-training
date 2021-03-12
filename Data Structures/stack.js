@@ -1,4 +1,5 @@
 // Creates the Stack Class for use later
+// FILO
 class Stack {
 
     constructor() {
