@@ -1,3 +1,10 @@
+/////reminder////
+// let head = {data: 1, next: null};
+// let lastNode = head;
+// lastNode.next = 5;
+// console.log(head); //{ data: 1, next: 5}
+////////////////
+
 class ListNode {
     constructor(data) {
       this.data = data;
