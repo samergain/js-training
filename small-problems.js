@@ -526,3 +526,59 @@ var mergeSorted = function (arr1, arr2) {
   
     return result;
   };
+
+  ///////////   PROBLEM 22  ///////////
+  // Write code to create a function that accepts two arrays of numbers
+// There will be one number common to both arrays
+// Return the common number
+// You may not use the `indexOf` or `includes` method
+
+var commonElement = function(arrA, arrB) {
+    var elements = {};
+  
+    for (var i = 0; i < arrA.length; i++) {
+      var num = arrA[i];
+      elements[num] = true;
+    }
+  
+    for (var i = 0; i < arrB.length; i++) {
+      var num = arrB[i];
+  
+      if (elements[num] === true) {
+        return num;
+      }
+    }
+  };
+  
+  //V2 -using a Set data structure
+  
+  var commonElement = function(arrA, arrB) {
+    var elements = new Set();
+  
+    for (var i = 0; i < arrA.length; i++) {
+      var num = arrA[i];
+      elements.add(num);
+    }
+  
+    for (var i = 0; i < arrB.length; i++) {
+      var num = arrB[i];
+  
+      if (elements.has(num)) {
+        return num;
+      }
+    }
+  };
+  
+  //V3 -nested for-loop bigO(n^2)
+  var commonElement = function(arrA, arrB) {
+    let match;
+    for(let i=0; i<arrA.length; i++){
+       for(let j=0; j<arrB.length; j++){
+           if(arrA[i] === arrB[j]){
+               match = arrB[j];
+               break;
+           }
+       }
+    }
+    return match;
+};
