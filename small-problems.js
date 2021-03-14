@@ -212,45 +212,29 @@ function lookNsay(n){
 //console.log(lookNsay(1233444443));
 
 //////////  PROBLEM 13  ///////////
-// Write code to create a function that accepts a string and returns an object containing the number of times each character appears in the string
+// Write code to create a function that accepts a string and returns the character that appears the maximum number of times in the string. If there is a tie in the maximum number of times a character appears in the string, return the character that appears first in the string.
 
-var characterCount = function(str) {
-    let arr = str.split("");
-    let charCount = {};
-    for(let i=0; i<arr.length; i++){
-        let current = arr[i];
-        let count = 1;
-        if(charCount[current]){
-            continue;
-        }
-        else {
-            for(let j=i+1; j<arr.length; j++){
-                if(arr[j]===current){
-                    count++
-                }
-            }
-            charCount[current] = count;
-        }
-    }
-    return charCount;
-};
-
-//version2 -BETTER
-var characterCount = function(str) {
+var maxCharacterCount = function(str) {
     var charMap = {};
   
     for (var i = 0; i < str.length; i++) {
       var char = str[i];
-  
       if (char in charMap) {
         charMap[char]++;
       } else {
         charMap[char] = 1;
       }
     }
-  
-    return charMap;
-  };
+    let max = 1;
+    let firstKey = str[0];
+    for(const key in charMap){
+        if(charMap[key]>max){
+            max = charMap[key];
+            firstKey = key;
+        }
+    }
+    return firstKey;
+};
 
 // let result = characterCount("Hello World");
 // console.log(result);
@@ -353,7 +337,7 @@ var isUnique2 = function(arr) {
 
 //////////  PROBLEM 17  ///////////
 // Write code to create a function that accepts two strings
-// Return true if the strings are anagrams of each other, otherwise return false
+// Return true if the strings are anagrams(contain the same collection of characters) of each other, otherwise return false
 
 var isAnagram = function(strA, strB) {
     if(strA.length !== strB.length){
@@ -582,3 +566,44 @@ var commonElement = function(arrA, arrB) {
     }
     return match;
 };
+
+//Picking Tickets
+/*
+Consider an array of n ticket prices, tickets. A number, m, is defined as the size of some subsequence, s, of tickets where each element covers an unbroken range of integers. Tha is to say, if you were to sort the elements in s, the absolute difference between any elements j and j+1 would be either 0 or 1. Determine the maximum length of a subsequence chosen from the tickets array.
+
+Example: tickets = [8,5,4,8,4] -> sorted: [4,4,5,8,8] -> subsequences: [4,4,5] and [8,8] lengths: 3,2
+The function should return: 3
+case 0: input[4,13,2,3] -> output[3]
+case 1: input[1,3,12]   -> output[1]
+*/
+function maxTickets(tickets) {
+    if(tickets.length > 1){
+        let counter = 1;
+        let sorted = tickets.sort();
+        let subTickets = [];
+        
+        for(let i=1; i<sorted.length; i++){
+            let dif = sorted[i] - sorted[i-1];
+            if(dif === 0 || dif === 1){
+                counter++;
+            } else {
+                subTickets.push(counter);
+                counter = 1;
+            }
+            if(i === (sorted.length -1)){
+                subTickets.push(counter);
+            }
+        }
+        let max =1;
+        for(let j=0; j<subTickets.length; j++){
+            if(subTickets[j]>max){
+                max = subTickets[j];
+            }
+        }
+        return max;
+    } else if( tickets.length === 1){
+        return 1;
+    } else if(tickets.length === undefined){
+        return 0;
+    }
+}
