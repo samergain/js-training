@@ -567,6 +567,7 @@ var commonElement = function(arrA, arrB) {
     return match;
 };
 
+////////////    PROBLEM 23  ////////////
 //Picking Tickets
 /*
 Consider an array of n ticket prices, tickets. A number, m, is defined as the size of some subsequence, s, of tickets where each element covers an unbroken range of integers. Tha is to say, if you were to sort the elements in s, the absolute difference between any elements j and j+1 would be either 0 or 1. Determine the maximum length of a subsequence chosen from the tickets array.
@@ -605,5 +606,59 @@ function maxTickets(tickets) {
         return 1;
     } else if(tickets.length === undefined){
         return 0;
+    }
+}
+
+////////////    PROBLEM 24  ////////////
+//TOOL LIST
+/*
+A milling machine in a manufacturing facility has a tool change system. The tool changer holds n tools and some duplicate tools may be included. the operator must move through the tools one at a time, either moving left or right. The tool changer is circular, so when the last tool in the tools array is reached in either direction, the next tools is at the other end of the array.
+
+Given the name of the next tool needed, determine the minimum number of left or right moves to reach it.
+
+Example:
+tools = ["ballendmill", "keywaycutter", "slotdrill", "facemill"]
+startIndex = 1
+target = "ballendmill"
+the pointer is standing at "keywaycutter" (location 1). to reach the target (location 0) there are two ways:
+right: 3 steps, left: 1 step
+minimum is 1
+output: 1
+*/
+function toolChanger(tools, startIndex, target){
+    //moving left
+    let leftCounter = 1;
+    let i = startIndex -1;
+    if(i < 0){
+        i = tools.length -1;
+    } else {
+        while(tools[i] !== target){
+            leftCounter++;
+            i--;
+            if(i < 0){
+                i = tools.length -1;
+            }
+        }
+    }
+    //moving right
+    let rightCounter = 1;
+    let j = startIndex +1;
+    if(j >= tools.length){
+        j = 0;
+    } else {
+        while(tools[j] !== target){
+            rightCounter++;
+            j++;
+            if(j >= tools.length){
+                j = 0;
+            }
+        }
+    }
+
+    //return minimum
+    if(rightCounter < leftCounter){
+        return rightCounter;
+    } else {
+        return leftCounter;
     }
 }
