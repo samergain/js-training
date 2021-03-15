@@ -662,3 +662,31 @@ function toolChanger(tools, startIndex, target){
         return leftCounter;
     }
 }
+
+
+////////    PROBLEM 25  /////////
+//Counting Valleys
+//Given a string of U's(Up) and D's(Down) representing a hiking-trail(path) that starts at sea-level and ends at sea-level. Count the number of valleys in that trail
+/*
+Example:
+input (steps: 8, path: "UDDDUDUU")
+output: 1
+UD (hill)- DDUDUU(valley)
+*/
+
+function countingValleys(steps, path) {
+    // Write your code here
+    let alt = 0;
+    let numOfValleys = 0;
+    for(let i=0; i< steps; i++){
+       if(path[i] === 'D'){
+           alt -=1;
+       } else if(path[i] === 'U'){
+           alt += 1;
+       }
+       if(alt === 0 && path[i] === 'U'){
+           numOfValleys++;
+       }
+    }
+    return numOfValleys;
+}
