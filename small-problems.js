@@ -690,3 +690,62 @@ function countingValleys(steps, path) {
     }
     return numOfValleys;
 }
+
+////////    PROBLEM 26   //////////
+//Given an array of 0's and 1's. Return the minimum number of jumps needed to reach the end of the array.
+//Each jump can be current position+1 or +2
+//Only 0's are safe spots to jump on
+//There will always be a way to reach the end
+/*
+Example1:
+Input = [0,0,0,0,1,0]
+output = 3
+Example2:
+Input = [0,0,1,0,0,1,0]
+Output = 4
+*/
+function jumpingOnClouds(c) {
+    let jumps = 0;
+    for(let i=0; i<c.length; i++){
+        if( i>0 ){
+            jumps++;
+        }
+        if((i+2) < c.length && c[i+2] === 0){
+            i++;
+        }
+        
+    }
+    return jumps;
+}
+
+////////    PROBLEM 26   //////////
+//There is a string, s (input), of lowercase English letters that is repeated infinitely many times. Given an integer, n (input), find and print the number of letter a's in the first n letters of the infinite string.
+/*
+Example: s = 'abcac'
+n = 10
+find number of a's in abcacabcac
+Output = 4
+*/
+
+function repeatedString(s, n) {
+    let sArray = s.split("");
+    //number of a's in s
+    let aCountIn_s = 0;
+    for(let i=0; i<sArray.length; i++){
+        if(sArray[i] === 'a'){
+            aCountIn_s++;
+        }
+    }
+    //number of repeated s's in n
+    let sCount = Math.floor(n/s.length);
+    //number of a's in the reminder of n
+    let rem = n % sArray.length;
+    let remS = sArray.splice(0,rem);
+    let remSCount = 0;
+    for(let i=0; i<remS.length; i++){
+        if(remS[i] === 'a'){
+            remSCount++;
+        }
+    }
+    return (aCountIn_s * sCount + remSCount)
+}
