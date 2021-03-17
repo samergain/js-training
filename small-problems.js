@@ -752,4 +752,19 @@ function repeatedString(s, n) {
 
 
 ////////    PROBLEM 27   //////////
-//
+// Write code to create a function that accepts a string and returns an object
+// The object should contain keys for each character in the string
+// Each key should point to an array containing the indexes the character is found in the string
+
+var stringMap = function(str) {
+    let strmap = {}
+    for(let i=0; i<str.length; i++){
+        let current = str[i];
+        if(strmap[current]){
+            strmap[current].push(i)
+        } else {
+            strmap[current] = [i];
+        }
+    }
+    return strmap;
+};
