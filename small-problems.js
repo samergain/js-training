@@ -803,3 +803,28 @@ var permutationSubstring = function(str, sub) {
     return true;
   };
   
+
+//////////      PROBLEM 29      ///////////
+// Write code to create a function that accepts two arrays of numbers
+// Return a new array containing the intersecting elements of the arrays
+
+var arrayIntersection = function(arr1, arr2) {
+    let arr1map = {};
+    for(let i=0; i<arr1.length; i++){
+        let current = arr1[i];
+        if(arr1map[current]){
+            arr1map[current]++;
+        } else {
+            arr1map[current] = 1;
+        }
+    }
+    let result = [];
+    for(let j=0; j<arr2.length; j++){
+        let current = arr2[j];
+        if(arr1map[current] && (arr1map[current] > 0)){
+            result.push(current);
+            arr1map[current]--;
+        }
+    }
+    return result;
+};
