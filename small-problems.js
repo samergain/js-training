@@ -895,3 +895,12 @@ var removeDuplicates = function(nums) {
     }
   };
   
+///////     PROBLEM 32      ////////
+// Write a function that takes an unsorted array of positive and unique integers and returns the number missing from the array
+
+
+
+///////     PROBLEM 33      ////////
+// Write a function that takes an array and a positive integer and "rotates" the array to the left by the integer
+// Modify the original array rather than returning a new one
+// There is no need to return from this function
