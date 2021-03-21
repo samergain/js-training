@@ -828,3 +828,24 @@ var arrayIntersection = function(arr1, arr2) {
     }
     return result;
 };
+
+
+///////////  PROBLEM 30  ///////////
+// Write code to create a function that accepts an array of integers sorted in ascending (increasing) order and returns a new array containing the squares of each number in ascending order
+function asc_sqr(arr){
+    let indx1 = 0;
+    let indx2 = arr.length -1;
+    let indx3 = arr.length -1;
+    let result = new Array(arr.length);
+    while(indx1 <= indx2) {
+        if(Math.abs(arr[indx1]) > Math.abs(arr[indx2])){
+            result[indx3] = arr[indx1] ** 2;
+            indx1++;
+        } else {
+            result[indx3] = arr[indx2] ** 2;
+            indx2--;
+        }
+        indx3--;
+    }
+    return result;
+}
