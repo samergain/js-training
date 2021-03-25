@@ -964,3 +964,38 @@ var ransomNote = function(magazine, note) {
     return true;
   };
   
+//////// PROBLEM 35  //////////
+/// FIBONACCI ///
+//v1: one loop -> O(n)
+function fib1(num){
+    let a = 0;
+    let b = 1;
+    let temp;
+    while(num > 0){
+        temp = b;
+        b = a + b;
+        a = temp;
+        console.log('a:',a,'b:',b,'temp:', temp);
+        num--;
+    }
+    return b;
+}
+
+//v2: recursion -> O(2^n)
+function fib2(num){
+    console.log(num)
+    if(num <= 1){
+        return 1;
+    }
+    return (fib2(num -1) + fib2(num -2))
+}
+
+//v3: memoization -> recursion with O(n)
+function fib3(num, memo){
+    memo = (memo || {});
+    console.log('memo:',memo,'num:',num);
+    if(num <= 1) return 1;
+    if(memo[num]) return memo[num];
+    return memo[num] = fib3(num - 1, memo) + fib3(num - 2, memo);
+}
+console.log(fib3(8))
