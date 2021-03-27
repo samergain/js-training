@@ -379,8 +379,8 @@ var mostSongsInPlaylist = function(arr) {
     // add your code here...
     let sorted = arr.sort();
     let sum = 0;
-    for(let i=0; i<arr.length; i++){
-      sum += arr[i];
+    for(let i=0; i<sorted.length; i++){
+      sum += sorted[i];
       if(sum > 60){
         return i;
       }
@@ -411,6 +411,7 @@ var mostSongsInPlaylist = function(arr) {
 
   ////////////   PROBLEM 19   //////////
   // Write code to create a function that accepts a number and returns true if the number is a perfect square, otherwise it returns false.
+  //perfect square is an integer that is the square of an integer
 // You may not use the built-in Math.sqrt method
 
 var isPerfectSquare = function(num) {
@@ -1002,3 +1003,33 @@ function fib3(num, memo){
     return memo[num] = fib3(num - 1, memo) + fib3(num - 2, memo);
 }
 console.log(fib3(8))
+
+///////   PROBLEM 36   /////////
+// Write a function that takes two strings and determines returns true if every word found in the second string is present in the first string. You will be checking for both words and their frequency. Assume you'll need to worry about casing, but the strings won't contain any punctuation. Assume neither string will be empty
+
+var ransomNote = function(magazine, note) {
+    var magazineWords = magazine.split(" ");
+    var noteWords = note.split(" ");
+  
+    var magazineMap = {};
+    var noteMap = {};
+  
+    for (var i = 0; i < magazineWords.length; i++) {
+      var word = magazineWords[i];
+      magazineMap[word] = (magazineMap[word] || 0) + 1;
+    }
+  
+    for (var i = 0; i < noteWords.length; i++) {
+      var word = noteWords[i];
+      noteMap[word] = (noteMap[word] || 0) + 1;
+    }
+  
+    for (var key in noteMap) {
+      if (magazineMap[key] !== noteMap[key]) {
+        return false;
+      }
+    }
+  
+    return true;
+  };
+  
