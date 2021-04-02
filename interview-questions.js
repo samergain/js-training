@@ -1,4 +1,4 @@
-//Q1: which console.log output is "true" and which is "false"
+//Q1-1: which console.log output is "true" and which is "false"
 class A {};
 class B extends A {}
 class C extends B {}
@@ -9,6 +9,22 @@ console.log(b instanceof B);
 console.log((b instanceof B)&&(!(b instanceof A)));
 console.log((b instanceof B)&&(!(b instanceof C)));
 
+//Q1-2: what's the output?
+function a() {
+      
+    alert('A!');
+
+    function b(){
+        alert('B!'); 
+    }
+
+    return b();
+}
+
+var s = a();
+alert('break');
+s();
+//https://stackoverflow.com/questions/7629891/functions-that-return-a-function#7629984
 
 //Q2: which testing is used for a programm's individual component functionality testing
 // 1- Functionality testing
