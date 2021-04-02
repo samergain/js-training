@@ -1,29 +1,29 @@
 //Q1-1: which console.log output is "true" and which is "false"
-class A {};
-class B extends A {}
-class C extends B {}
+// class A {};
+// class B extends A {}
+// class C extends B {}
 
-let b = new B();
+// let b = new B();
 
-console.log(b instanceof B);
-console.log((b instanceof B)&&(!(b instanceof A)));
-console.log((b instanceof B)&&(!(b instanceof C)));
+// console.log(b instanceof B);
+// console.log((b instanceof B)&&(!(b instanceof A)));
+// console.log((b instanceof B)&&(!(b instanceof C)));
 
 //Q1-2: what's the output?
-function a() {
+// function a() {
       
-    alert('A!');
+//     alert('A!');
 
-    function b(){
-        alert('B!'); 
-    }
+//     function b(){
+//         alert('B!'); 
+//     }
 
-    return b();
-}
+//     return b();
+// }
 
-var s = a();
-alert('break');
-s();
+// var s = a();
+// alert('break');
+// s();
 //https://stackoverflow.com/questions/7629891/functions-that-return-a-function#7629984
 
 //Q2: which testing is used for a programm's individual component functionality testing
@@ -47,4 +47,18 @@ Microservices are a form of service-oriented architecture style, wherein applica
 Benefits: faster, lower costs, and fewer bugs.
 */
 
-//Q5: 
+//Q5: what's the output?
+//This is the concept of 'Closures'. 
+//https://stackoverflow.com/questions/7629891/functions-that-return-a-function#7629984
+//https://www.w3schools.com/js/js_function_closures.asp
+
+const getUid = (() => {
+    var uid = 0;
+    console.log('uid before return', uid)
+    console.log('take a break here')
+    return () => ++uid;
+})();
+
+console.log(getUid());
+console.log(getUid());
+console.log(getUid());
