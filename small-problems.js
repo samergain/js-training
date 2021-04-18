@@ -1237,4 +1237,53 @@ var intToRoman = function(num) {
   
     return result;
   };
-  
+
+
+//////  PROBLEM 44  //////
+/// Convert input N to binary
+function solution(N) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  let binN = [];
+  let binNleng = 1;
+  if(N===1){
+      return 1;
+  } else {
+      let div = parseInt(N/2);
+      while(div != 1){
+          div = parseInt(div/2);
+          binNleng++;
+      }
+  }
+  let sum =0;
+  for(let i=binNleng; i>=0; i--){
+      if((Math.pow(2,i) + sum) <= N){
+          binN[i] = 1;
+          sum = sum + Math.pow(2,i);
+      } else {
+          binN[i] = 0;
+      }
+  }
+  return binN.reverse().join('');
+}
+
+console.log(solution(1022322125432));
+
+//////  PROBLEM 45  //////
+//Find an index in an array such that its prefix sum equals its suffix sum.
+//A[0] + A[1] + ... + A[P−1] = A[P+1] + ... + A[N−2] + A[N−1] 
+// RETURN P. IF NOT FOUND RETURN -1
+// Sum of zero elements is assumed to be equal to 0. This can happen if P = 0 or if P = N−1.
+
+
+
+
+//////  PROBLEM 46  //////
+// Find the smallest positive integer that does not occur in a given sequence.
+/* given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
+For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
+Given A = [1, 2, 3], the function should return 4.
+Given A = [−1, −3], the function should return 1.
+Write an effecient algorithm for the following assumptions:
+N is an integer within the range [1..100,000]; 
+each element of array A is an integer within the range [−1,000,000..1,000,000].
+*/
