@@ -1,29 +1,16 @@
-function minInt(A){
-    let x=0;
-    let found = false;
-    for(var i=0; i<A.length; i++){
-        x++;
-        for(var j=0; j<A.length; j++){
-            if(A[j] === x){
-                found = true;
-            }
-        }
-        if(found === false){
-            return x;
-        } else {
-            found = false;
-        }
+function toBin(num){
+    if(num < 1){
+        return "not valid";
     }
-    return x+1;
+    let binNum = [];
+    let div = num;
+    while(div >= 1){
+        binNum.unshift(div%2);
+        div = Math.floor(div/2);
+    }
+    return binNum;
 }
 
-let f = [];
-let g = [-1,-3];
-let h = [1,2,3];
-let k = [4,-3,3,-9,2,1];
-let l = [1, 3, 6, 4, 1, 2];
-console.log(minInt(f));
-console.log(minInt(g));
-console.log(minInt(h));
-console.log(minInt(k));
-console.log(minInt(l));
+console.log("1",toBin(0));
+console.log("16",toBin(16));
+console.log("128",toBin(128));

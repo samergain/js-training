@@ -1241,30 +1241,19 @@ var intToRoman = function(num) {
 
 //////  PROBLEM 44  //////
 /// Convert input N to binary
-function solution(N) {
-  // write your code in JavaScript (Node.js 8.9.4)
-  let binN = [];
-  let binNleng = 1;
-  if(N===1){
-      return 1;
-  } else {
-      let div = parseInt(N/2);
-      while(div != 1){
-          div = parseInt(div/2);
-          binNleng++;
-      }
+function toBin(num){
+  if(num < 1){
+      return "not valid";
   }
-  let sum =0;
-  for(let i=binNleng; i>=0; i--){
-      if((Math.pow(2,i) + sum) <= N){
-          binN[i] = 1;
-          sum = sum + Math.pow(2,i);
-      } else {
-          binN[i] = 0;
-      }
+  let binNum = [];
+  let div = num;
+  while(div >= 1){
+      binNum.unshift(div%2);
+      div = Math.floor(div/2);
   }
-  return binN.reverse().join('');
+  return binNum;
 }
+
 //test
 //console.log(solution(1022322125432));
 
@@ -1287,6 +1276,8 @@ Write an effecient algorithm for the following assumptions:
 N is an integer within the range [1..100,000]; 
 each element of array A is an integer within the range [−1,000,000..1,000,000].
 */
+
+//-v1: big(O)= n^2
 function minInt(A){
   let x=0;
   let found = false;
@@ -1305,6 +1296,20 @@ function minInt(A){
   }
   return x+1;
 }
+//v2: big(O)=n
+function minInt(A){
+  let settingA = new Set();
+  for(let i=0; i<A.length; i++){
+      if(A[i]>0)
+      settingA.add(A[i]);
+  }
+  let x =1;
+  while(settingA.has(x)){
+      x++;
+  }
+  return x;
+}
+
 //test units
 // let f = [];
 // let g = [-1,-3];
